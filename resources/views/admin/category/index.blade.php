@@ -50,7 +50,7 @@
                             <td>{{$category->created_at->format('d/m/Y')}}</td>
                             <td>
                                 <a 
-                                    onclick="confirm('Are you sure want to delete this category?')" 
+                                    onclick="return confirm('Are you sure want to delete this category?')" 
                                     href="{{url('admin/category/delete/'.$category->id)}}" 
                                     class="btn btn-danger"
                                 >
