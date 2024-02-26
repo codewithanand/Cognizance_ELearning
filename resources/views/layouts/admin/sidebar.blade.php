@@ -13,9 +13,15 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{url('/admin/dashboard')}}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
+    </li>
+
+    <li class="nav-item active">
+        <a class="nav-link" href="{{url('/admin/trash')}}">
+            <i class="fas fa-trash"></i>
+            <span>Trash</span></a>
     </li>
 
     <!-- Divider -->
@@ -40,6 +46,8 @@
             </div>
         </div>
     </li>
+
+
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">

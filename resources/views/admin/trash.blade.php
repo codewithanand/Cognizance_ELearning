@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Categories - Elearning')
+@section('title', 'Trash - Elearning')
 
 @section('custom_styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
@@ -9,9 +9,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Categories</h1>
-    <a href="{{url('/admin/category/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-download fa-sm text-white-50"></i> Create Category</a>
+    <h1 class="h3 mb-0 text-gray-800">Trash</h1>
 </div>
 
 <div class="container">
@@ -38,26 +36,32 @@
                         <tr>
                             <th>Title</th>
                             <th>Thumbnail</th>
-                            <th>Created At</th>
+                            <th>Deleted At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $category)
+                        @foreach ($trashed_categories as $category)
                         <tr>
                             <td>{{$category->title}}</td>
                             <td><img src="{{asset('uploads/category/'.$category->image)}}" alt="" height="32"></td>
-                            <td>{{$category->created_at->format('d/m/Y')}}</td>
+                            <td>{{$category->deleted_at->format('d/m/Y')}}</td>
                             <td>
                                 <a
-                                    onclick="return confirm('Are you sure want to delete this category?')"
-                                    href="{{url('admin/category/delete/'.$category->id)}}"
+                                    onclick="return confirm('Are you sure want to delete this category permanently?')"
+                                    href="{{url('/admin/trash/delete/'.$category->id)}}"
                                     class="btn btn-danger"
                                 >
                                     <i class="fas fa-trash"></i>
                                 </a>
 
-                                <a href="{{url('admin/category/edit/'.$category->id)}}" class="btn btn-info"><i class="fas fa-pen"></i></a>
+                                <a
+                                    onclick="return confirm('Are you sure want to restore this category?')"
+                                    href="{{url('/admin/trash/restore/'.$category->id)}}"
+                                    class="btn btn-success"
+                                >
+                                    <i class="fas fa-trash-restore"></i>
+                                </a>
                             </td>
                         </tr>
                         @endforeach
