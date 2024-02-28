@@ -30,6 +30,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/category/update/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
     Route::get('/category/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
 
+    Route::get('/courses', [App\Http\Controllers\Admin\CourseController::class, 'index']);
+    Route::get('/course/create', [App\Http\Controllers\Admin\CourseController::class, 'create']);
+    Route::post('/course/create', [App\Http\Controllers\Admin\CourseController::class, 'store']);
+    Route::get('/course/edit/{id}', [App\Http\Controllers\Admin\CourseController::class, 'edit']);
+    Route::post('/course/update/{id}', [App\Http\Controllers\Admin\CourseController::class, 'update']);
+    Route::get('/course/delete/{id}', [App\Http\Controllers\Admin\CourseController::class, 'destroy']);
+
     Route::get('/trash', [App\Http\Controllers\Admin\CategoryController::class, 'trash']);
     Route::get('/trash/restore/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'restore']);
     Route::get('/trash/delete/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'delete']);
