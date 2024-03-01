@@ -23,7 +23,7 @@ class CourseController extends Controller
         $request->validate([
             'category_id' => 'required',
             'title' => 'required',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'long_description' => 'required',
             'slug' => 'required|unique:courses',
         ]);
